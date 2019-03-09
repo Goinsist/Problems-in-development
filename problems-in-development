@@ -1,1 +1,5 @@
 1.第一次连接网站出现500错误，是由数据库休眠引起的，c3p0可以通过设置preferredTestQuery值为SELECT 1,idleConnectionTestPeriod为8小时以内,testConnectionOnCheckout为true来通过在8小时内对数据库进行测试连接解决，quartz也会因为这个原因导致有时不执行。
+
+2.docker启动mysql如果有静态资源目录需要在run dokcer时挂载宿主机目录。
+
+3.远程debug还需要多开一个端口
