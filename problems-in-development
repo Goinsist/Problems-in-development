@@ -3,3 +3,39 @@
 2.docker启动mysql如果有静态资源目录需要在run dokcer时挂载宿主机目录。
 
 3.远程debug还需要多开一个端口
+
+4.排名sql
+SELECT
+	abc.product_name,
+	abc.sales,
+	abc.rank
+FROM
+	(
+		SELECT
+			ab.product_name,
+			ab.sales ,@curRank :=
+		IF (
+			@prevRank = ab.sales ,@curRank ,@incRank
+		) AS rank,
+		@incRank :=@incRank + 1,
+		@prevRank := ab.sales
+	FROM
+		(
+			SELECT
+				a.product_name,
+				sum(b.total) AS sales
+			FROM
+				tb_product a,
+				tb_product_sell_daily b,
+				(
+					SELECT
+						@curRank := 0 ,@incRank := 1
+				) r
+			WHERE
+				a.product_id = b.product_id
+			GROUP BY
+				a.product_name
+			ORDER BY
+				sales DESC
+		) ab
+	) abc
