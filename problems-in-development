@@ -39,3 +39,4 @@ FROM
 				sales DESC
 		) ab
 	) abc
+5.出现Could not write JSON document: (was java.lang.NullPointerException)的原因可能是属性的数据类型用了包装类，而set/get方法是基本类型导致的，统一类型即可
