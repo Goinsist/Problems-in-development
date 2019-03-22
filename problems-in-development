@@ -40,3 +40,19 @@ FROM
 		) ab
 	) abc
 5.出现Could not write JSON document: (was java.lang.NullPointerException)的原因可能是属性的数据类型用了包装类，而set/get方法是基本类型导致的，统一类型即可
+
+6.mybatis插入数据获取自增主键 <insert id="add"
+        useGeneratedKeys="true" keyColumn="id" keyProperty="id"
+        parameterType="user">
+    INSERT INTO `user` (`name`,sex,register_ts) VALUES (#{name},#{sex},#{registerTs})
+    <selectKey resultType="int" keyProperty="id" order="AFTER">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+</insert>
+1. 想要获取自增主键id，应该通过对象的getId()方法，而并不是insert的返回值，insert的返回值表示的是影响行数
+
+2.在mapper.xml中：useGeneratedKeys="true"、keyProperty="id"，这两个属性的作用：
+
+　　共同决定了sql执行后，会将主键封装到id属性上；
+
+　　自增主键封装到了对象的id属性上了，那么想要获取，直接调用对象的getId()方法就可以了
