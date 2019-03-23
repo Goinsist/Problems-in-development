@@ -56,3 +56,10 @@ FROM
 　　共同决定了sql执行后，会将主键封装到id属性上；
 
 　　自增主键封装到了对象的id属性上了，那么想要获取，直接调用对象的getId()方法就可以了
+  
+  7.在sql server中，我们可是使用以下update语句对表进行更新：
+update a set a.xx= (select yy from b) ;
+但是在mysql中，不能直接使用set select的结果，必须使用inner join：
+update a inner join (select yy from b) c set a.xx = c.yy
+
+ 
