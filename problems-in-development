@@ -63,3 +63,16 @@ update a set a.xx= (select yy from b) ;
 update a inner join (select yy from b) c set a.xx = c.yy
 
  8.要将动态网页里的内容按照自己的格式生成word文档，可以先用Htmlunit处理成xml，再用Jsoup生成document进行数据解析，最后用Freemaker根据自己生成的word模板进行输出.
+ 9.如果用的是springboot在部署到tomcat里时访问不了项目，要记住
+ @SpringBootApplication
+public class FavoritesApplication extends SpringBootServletInitializer{
+
+    /**
+     * 如此配置打包后可以用tomcat下使用
+     * @param application
+     * @return
+     */
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(FavoritesApplication.class);
+    }
