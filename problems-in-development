@@ -76,3 +76,4 @@ public class FavoritesApplication extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(FavoritesApplication.class);
     }
+10.FTPClient的store方法不要用xshell的sftp创建目录，否则会上传不了。
