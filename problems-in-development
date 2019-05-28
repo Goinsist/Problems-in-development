@@ -78,3 +78,5 @@ public class FavoritesApplication extends SpringBootServletInitializer{
     }
 10.FTPClient的store方法不要用xshell的sftp创建目录，否则会上传不了。
 11.使用useGeneratedKeys生成主键时，不能在DAO层使用@Param注解传递参数，否则无法获取主键,如果在Dao层配置类@Param("item")注解的时候，那么在使用keyProperty就是变成item.id
+12.axios不管放在方法哪个位置都是最后执行
+13.js的replace方法只会替换一次，要全部替换要用正则
