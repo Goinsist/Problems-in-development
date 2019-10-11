@@ -84,3 +84,4 @@ public class FavoritesApplication extends SpringBootServletInitializer{
 15.vue打包assetsPublicPath:'./'否则报Uncaught SyntaxError: Unexpected token <
 16.ios new Date("2018-04-27 11:11")获取不到时间，要指定new Date("2018/04/27 11:11")才能获取
 17.quartz misfire机制 任务并发执行中如果在一个时间段内错过一个任务 会在上个任务执行结束后立即执行，如果一个时间段内错过两个任务，则会等到要执行的时间段再去执行
+18.所有存储相同数据的列名和列类型必须一致。如果两个表关联列的数据类型不同，关联时会进行隐式的类型转换，造成列上的索引失效
